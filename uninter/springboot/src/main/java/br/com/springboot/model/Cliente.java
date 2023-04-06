@@ -43,15 +43,14 @@ public class Cliente {
 	@NotNull(message = "Informe um sexo")
 	private Sexo sexo;
 	
-	@Column(length = 10)
+	@Column(length = 14)
 	private String telefone;
 	
-	@Column(length = 11)
+	@Column(length = 15)
 	private String celular;
 	
 	@Column(nullable = false, length = 50)
 	@Email
-	@NotNull(message = "Informe um e-mail")
 	private String email;
 	
 	private boolean ativo;

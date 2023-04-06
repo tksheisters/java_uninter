@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Sistema de estoque</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	</head>
+	<body>
+		<div class="container">
+			<form th:action="@{/login}" method="POST">
+				<h2>Faça seu Login</h2>
+				<p>Insira seus dados abaixo</p>
+				<div class="mb-3">
+					<label class="form-label" for="username">Usuário</label> <input
+						type="text" id="username" name="username" class="form-control"
+						placeholder="Digite o usuário" autofocus>
+				</div>
+				<div class="mb-3">
+					<label class="form-label" for="password">Senha</label> <input
+						type="password" id="password" name="password" class="form-control"
+						placeholder="Digite a senha">
+				</div>
+				<div class="mb-3">
+					<input class="btn btn-primary" type="submit" value="Entrar" />
+				</div>
+			</form>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js" integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	</body>
+	
+	<style>
+	.container {
+		margin-top: 200px;
+		width: 400px;
+		border-radius: 10px;
+		background-color: #f8f9fa;
+		padding: 20px;
+	}
+	
+	input {
+		width: 100%;
+	}
+	</style>
+</html>

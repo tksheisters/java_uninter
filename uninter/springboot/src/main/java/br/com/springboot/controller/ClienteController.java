@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.springboot.bo.ClienteBO;
 import br.com.springboot.model.Cliente;
@@ -28,13 +29,17 @@ public class ClienteController {
 	}
 
 	@RequestMapping(value = "", method = RequestMethod.POST)
-	public String salva(@Valid @ModelAttribute("cliente") Cliente cliente, BindingResult result) {
-		if (result.hasErrors())
+	public String salva(@Valid @ModelAttribute("cliente") Cliente cliente, BindingResult result, RedirectAttributes attr) {
+		if (result.hasErrors()) {
 			return "cliente/formulario";
-		if (cliente.getId() == null)
+		}
+		if (cliente.getId() == null) {
 			bo.insere(cliente);
-		else
+			attr.addFlashAttribute("feedback", "Cliente cadastrado com sucesso");
+		} else {
 			bo.atualiza(cliente);
+			attr.addFlashAttribute("feedback", "Cliente atualizado com sucesso");
+		}
 		return "redirect:/clientes";
 	}
 
@@ -55,10 +60,12 @@ public class ClienteController {
 	}
 
 	@RequestMapping(value = "/inativa/{id}", method = RequestMethod.GET)
-	public String inativa(@PathVariable("id") Long id) {
+	public String inativa(@PathVariable("id") Long id, RedirectAttributes attr) {
+		System.out.println(id);
 		try {
 			Cliente cliente = bo.pesquisaPeloId(id);
 			bo.inativa(cliente);
+			attr.addFlashAttribute("feedback", "Cliente foi inativado com sucesso");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -66,9 +73,15 @@ public class ClienteController {
 	}
 
 	@RequestMapping(value = "/ativa/{id}", method = RequestMethod.GET)
-	public String ativa(@PathVariable("id") Long id, ModelMap model) {
-		Cliente cliente = bo.pesquisaPeloId(id);
-		bo.ativa(cliente);
+	public String ativa(@PathVariable("id") Long id, RedirectAttributes attr) {
+		System.out.println(id);
+		try {
+			Cliente cliente = bo.pesquisaPeloId(id);
+			bo.ativa(cliente);
+			attr.addFlashAttribute("feedback", "Cliente ativado com sucesso");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "redirect:/clientes";
 	}
 }
