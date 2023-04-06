@@ -34,6 +34,9 @@ public class Cliente {
 	@Column(nullable = false, length = 50)
 	private String email;
 	private boolean ativo;
+	public Cliente() {
+		this.ativo = true;
+	}
 	
 	public Long getId() {
 		return id;
