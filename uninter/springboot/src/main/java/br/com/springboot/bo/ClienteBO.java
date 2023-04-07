@@ -10,41 +10,41 @@ import br.com.springboot.model.Cliente;
 @Service
 public class ClienteBO implements CRUD<Cliente, Long>{
 	@Autowired
-	private ClienteDAO dao;
+	private ClienteDAO clienteDAO;
 
 	@Override
 	public Cliente pesquisaPeloId(Long id) {
-		return dao.pesquisaPeloId(id);
+		return clienteDAO.pesquisaPeloId(id);
 	}
 
 	@Override
 	public List<Cliente> lista() {
-		return dao.lista();
+		return clienteDAO.lista();
 	}
 
 	@Override
 	public void insere(Cliente cliente) {
-		dao.insere(cliente);
+		clienteDAO.insere(cliente);
 	}
 
 	@Override
 	public void atualiza(Cliente cliente) {
-		dao.atualiza(cliente);
+		clienteDAO.atualiza(cliente);
 	}
 
 	@Override
 	public void remove(Cliente cliente) {
-		dao.remove(cliente);
+		clienteDAO.remove(cliente);
 	}
 	
 	public void inativa(Cliente cliente) {
 		cliente.setAtivo(false);
-		dao.atualiza(cliente);
+		clienteDAO.atualiza(cliente);
 	}
 	
 	public void ativa(Cliente cliente) {
 		cliente.setAtivo(true);
-		dao.atualiza(cliente);
+		clienteDAO.atualiza(cliente);
 	}
 
 }
