@@ -26,7 +26,7 @@ public class FornecedorDAO implements CRUD<Fornecedor, Long> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Fornecedor> lista() {
-		Query query = entityManager.createQuery("Select c from Fornecedor c");
+		Query query = entityManager.createQuery("Select f from Fornecedor f");
 		return (List<Fornecedor>) query.getResultList();
 	}
 

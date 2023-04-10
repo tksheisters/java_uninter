@@ -26,7 +26,7 @@ public class ProdutoDAO implements CRUD<Produto, Long> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Produto> lista() {
-		Query query = entityManager.createQuery("Select c from Produto c");
+		Query query = entityManager.createQuery("Select p from Produto p");
 		return (List<Produto>) query.getResultList();
 	}
 
